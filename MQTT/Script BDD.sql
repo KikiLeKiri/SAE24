@@ -10,12 +10,12 @@ PRIMARY KEY (id)
 );
 
 CREATE TABLE Donnee (
-id varchar(50) NOT NULL,
+id_capteur varchar(50) NOT NULL,
 date_ date NOT NULL,
 heure time NOT NULL,
 temperature float NOT NULL,
 CONSTRAINT fk_Capteur
-	FOREIGN KEY (id)
+	FOREIGN KEY (id_capteur)
 	REFERENCES Capteur(id)
 );
 
