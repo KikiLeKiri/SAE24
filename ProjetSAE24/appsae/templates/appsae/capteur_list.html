@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des capteurs</title>
+</head>
+<body>
+    <h1>Voici la liste des capteurs</h1>
+
+    <ul>
+        {% for capteur in capteurs %}
+        <li>
+            <form method="POST" action="/donnees/">
+                {% csrf_token %}
+                <!-- type="hidden" -->
+                <input name="capteur_id" value="{{ capteur.id }}">
+                <button type="submit">{{ capteur.nom_capteur }}</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
