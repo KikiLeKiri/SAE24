@@ -11,7 +11,7 @@
         <li>
             <form method="POST" action="/donnees/">
                 {% csrf_token %}
-                <!-- type="hidden" pour cacher l'id du cpateur  -->
+                <!-- type="hidden" pour cacher l'id du cpateur -->
                 <input name="capteur_id" value="{{ capteur.id }}">
                 <button type="submit">{{ capteur.nom_capteur }}</button>
             </form>
