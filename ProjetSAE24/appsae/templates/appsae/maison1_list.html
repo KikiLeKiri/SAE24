@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Info maison</title>
+</head>
+<body>
+    <h1>Information sur la maison</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Pièce</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Température</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for maison in maisons %}
+            <tr>
+                <td>{{ maison.id }}</td>
+                <td>{{ maison.piece }}</td>
+                <td>{{ maison.date_field }}</td>
+                <td>{{ maison.heure }}</td>
+                <td>{{ maison.temperature }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
