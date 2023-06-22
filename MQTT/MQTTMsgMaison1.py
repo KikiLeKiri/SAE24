@@ -38,7 +38,7 @@ def publish(client):
         annee = datetime.date.today().year
         temps = time.localtime()
         heure = time.strftime("%H:%M:%S", temps)
-        msg = f"id={client_id},piece=sejour,date_={annee}-{mois}-{jour},heure={heure},temperature={temp}"
+        msg = f"id_capteur={client_id},piece=sejour,date_={annee}-{mois}-{jour},heure={heure},temperature={temp}"
         result = client.publish(topic, msg)
         # result: [0, 1]
         status = result[0]
