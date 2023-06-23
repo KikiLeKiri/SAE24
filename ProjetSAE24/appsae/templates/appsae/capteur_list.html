@@ -5,15 +5,13 @@
 </head>
 <body>
     <h1>Voici la liste des capteurs</h1>
-
+    
     <ul>
         {% for capteur in capteurs %}
         <li>
             <form method="POST" action="/donnees/">
                 {% csrf_token %}
-                <!-- type="hidden" pour cacher l'id du cpateur  -->
-                <input name="capteur_id" value="{{ capteur.id }}">
-                <button type="submit">{{ capteur.nom_capteur }}</button>
+                <button type="submit" name="capteur_id" value="{{ capteur.id }}">{{ capteur.nom_capteur }}</button>
             </form>
         </li>
         {% endfor %}

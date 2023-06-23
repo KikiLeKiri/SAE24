@@ -1,17 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 
 # Create your views here.
 
+from django.shortcuts import render
+from .models import Capteur, Donnee
+
 def capteur_list(request):
     capteurs = Capteur.objects.all()
-    context = {'capteurs': capteurs}
-    return render(request, 'appsae/capteur_list.html', context)
+    return render(request, 'appsae/capteur_list.html', {'capteurs': capteurs})
 
-def donnee_list(request, capteur_id):
-    if request.method == 'POST':
-        capteur_id = request.POST.get('capteur_id')
-        donnees = Donnee.objects.filter(id=capteur_id)
-        context = {'donnees': donnees}
-        return render(request, 'appsae/donnee_list.html', context)
-
+def donnee_list(request):
+    donnees = Donnee.objects.all()
+    return render(request, 'appsae/donnee_list.html', {'donnees': donnees})
