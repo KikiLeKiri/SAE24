@@ -3,17 +3,19 @@ CREATE DATABASE mqttdb;
 USE mqttdb;
 
 CREATE TABLE Capteur (
-id VARCHAR(50) NOT NULL,
+id INT NOT NULL AUTO_INCREMENT,
 nom_capteur VARCHAR(50) NOT NULL,
 piece VARCHAR(50) NOT NULL,
 PRIMARY KEY (id)
 );
 
 CREATE TABLE Donnee (
-id_capteur varchar(50) NOT NULL,
-date_ date NOT NULL,
-heure time NOT NULL,
-temperature float NOT NULL,
+id INT NOT NULL AUTO_INCREMENT,
+id_capteur INT NOT NULL,
+date_ DATE NOT NULL,
+heure TIME NOT NULL,
+temperature FLOAT NOT NULL,
+PRIMARY KEY (id),
 CONSTRAINT fk_Capteur
 	FOREIGN KEY (id_capteur)
 	REFERENCES Capteur(id)
