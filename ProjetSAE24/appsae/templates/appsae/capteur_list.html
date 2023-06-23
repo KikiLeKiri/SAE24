@@ -2,13 +2,15 @@
 <html>
 <head>
     <title>Liste des capteurs</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'appsae/capteur_list.css' %}">
 </head>
 <body>
     <h1>Liste des capteurs</h1>
-    <ul>
-    {% for capteur in capteurs %}
-        <li><a href="{% url 'donnee_list' capteur.id %}">{{ capteur.nom_capteur }}</a></li>
-    {% endfor %}
-    </ul>
+    <div class="button-container">
+        {% for capteur in capteurs %}
+            <a class="capteur-button" href="{% url 'donnee_list' capteur.id %}">{{ capteur.nom_capteur }}</a>
+        {% endfor %}
+    </div>
 </body>
 </html>
