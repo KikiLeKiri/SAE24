@@ -7,7 +7,24 @@
 </head>
 <body>
     <h1>Liste des données du capteur</h1>
-    <h2>{{ capteur.nom_capteur }}</h2>
+    <h2>Capteur: {{ capteur.nom_capteur }}</h2>
+
+    <h2>Filtrer les données</h2>
+    <form method="GET" action="{% url 'donnee_list' capteur.id %}">
+        <label for="start_date">Date de début:</label>
+        <input type="date" id="start_date" name="start_date">
+
+        <label for="end_date">Date de fin:</label>
+        <input type="date" id="end_date" name="end_date">
+
+        <label for="start_time">Heure de début:</label>
+        <input type="time" id="start_time" name="start_time">
+
+        <label for="end_time">Heure de fin:</label>
+        <input type="time" id="end_time" name="end_time">
+
+        <button type="submit">Filtrer</button>
+    </form>
 
     <h2>Liste des données</h2>
     <table>
@@ -30,6 +47,5 @@
             {% endfor %}
         </tbody>
     </table>
-    
 </body>
 </html>
