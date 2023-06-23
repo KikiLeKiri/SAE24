@@ -11,10 +11,10 @@ class Capteur(models.Model):
 
 class Donnee(models.Model):
     id = models.AutoField(primary_key=True)
-    date = models.DateField()
+    datte = models.DateField()
     heure = models.TimeField()
     temperature = models.FloatField()
-    capteur = models.ForeignKey(Capteur, on_delete=models.CASCADE)
+    id_capteur = models.ForeignKey(Capteur, on_delete=models.CASCADE, db_column='id_capteur')
 
     class Meta:
         managed = False

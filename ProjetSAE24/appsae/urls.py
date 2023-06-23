@@ -17,6 +17,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('capteur_list/', views.capteur_list),
-    path('donnees/', views.donnee_list, name='donnee_list'),
+    path('capteur_list/', views.capteur_list, name='capteur_list'),
+    path('donnee_list/<int:capteur_id>/', views.donnee_list, name='donnee_list'),
 ]

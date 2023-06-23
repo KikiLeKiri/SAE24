@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Données des capteur</title>
+    <title>Liste des données du capteur</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'appsae/donnee_list.css' %}">
 </head>
 <body>
-    <h1>Voici les données des capteur</h1>
+    <h1>Liste des données du capteur</h1>
+    <h2>Capteur: {{ capteur.nom_capteur }}</h2>
 
-    <h2>Capteur ID: {{ capteur_id }}</h2>
+    <h2>Liste des données</h2>
     <table>
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Date</th>
                 <th>Heure</th>
                 <th>Température</th>
@@ -17,13 +21,15 @@
         </thead>
         <tbody>
             {% for donnee in donnees %}
-            <tr>
-                <td>{{ donnee.date_field }}</td>
-                <td>{{ donnee.heure }}</td>
-                <td>{{ donnee.temperature }}</td>
-            </tr>
+                <tr>
+                    <td>{{ donnee.id }}</td>
+                    <td>{{ donnee.datte }}</td>
+                    <td>{{ donnee.heure }}</td>
+                    <td>{{ donnee.temperature }}</td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
+    
 </body>
 </html>
