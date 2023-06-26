@@ -7,7 +7,8 @@
 </head>
 <body>
     <h1>Liste des données du capteur</h1>
-    <h2>Capteur: {{ capteur.nom_capteur }}</h2>
+    <br> 
+    <h2>{{ capteur.nom_capteur }} se situant dans la pièce : {{ capteur.piece }}</h2>
 
     <h2>Filtrer les données</h2>
     <form method="GET" action="{% url 'donnee_list' capteur.id %}">
@@ -25,6 +26,11 @@
 
         <button type="submit">Filtrer</button>
     </form>
+
+    <h2>Modifier le capteur</h2>
+    <a href="{% url 'modifier_capteur' capteur.id %}">
+        <button>Modifier Capteur</button>
+    </a>
 
     <h2>Liste des données</h2>
     <table>
