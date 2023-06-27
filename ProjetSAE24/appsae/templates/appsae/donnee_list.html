@@ -35,6 +35,11 @@
         <button>Modifier Capteur</button>
     </a>
 
+    <h2>Affiche sous forme de graphique</h2>
+    <a href="{% url 'graphique' capteur_id=capteur.id %}">
+        <button>Afficher le graphique</button>
+    </a>
+
     <h2>Liste des données</h2>
     <table>
         <thead>

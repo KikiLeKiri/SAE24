@@ -3,6 +3,8 @@ from django.views import View
 from .models import *
 from .forms import *
 from datetime import datetime
+import plotly.graph_objects as go
+from plotly.offline import plot
 
 
 # Create your views here.
@@ -60,3 +62,17 @@ def toute_donnee(request):
         'dataset' : datatest                
     }
     return render(request, 'appsae/toute_donnee.html', context)
+
+def affichage_graphique(request, capteur_id):
+    capteur = Capteur.objects.get(id=capteur_id)
+
+    donnees = Donnee.objects.filter(id_capteur=capteur)
+
+    x = [donnee.heure for donnee in donnees]
+    y = [donnee.temperature for donnee in donnees]
+
+    fig = go.Figure(data=go.Scatter(x=x, y=y))
+    graph = plot(fig, output_type='div')
+
+    context = {'capteur': capteur, 'graph': graph}
+    return render(request, 'appsae/graphique.html', context)
