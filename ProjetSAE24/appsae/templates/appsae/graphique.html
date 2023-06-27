@@ -7,5 +7,12 @@
 <body>
     <h1>Affichage graphique du capteur {{ capteur.nom_capteur }}</h1>
     <div>{{ graph|safe }}</div>
+    <script>
+        // Fonction pour actualiser la page en javascript 
+        function actualiserPage() {
+            location.reload();
+        }
+        setInterval(actualiserPage, 10000);
+    </script>
 </body>
 </html>

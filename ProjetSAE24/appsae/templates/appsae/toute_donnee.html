@@ -5,8 +5,8 @@
     </a>
 <head>
     <title>Toutes les données des capteurs</title>
-    {% comment %} {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'appsae/toute_donnee.css' %}"> {% endcomment %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'appsae/toute_donnee.css' %}">
 </head>
 <body>
     <h1>Toutes les données des capteurs</h1>
@@ -38,5 +38,12 @@
 
         </tbody>
     </table>
+    <script>
+        // Fonction pour actualiser la page en javascript 
+        function actualiserPage() {
+            location.reload();
+        }
+        setInterval(actualiserPage, 10000);
+    </script>
 </body>
 </html>

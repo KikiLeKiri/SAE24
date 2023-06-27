@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.views import View
 from .models import *
 from .forms import *
 from datetime import datetime
 import plotly.graph_objects as go
 from plotly.offline import plot
+import csv
 
 
 # Create your views here.
@@ -76,3 +77,18 @@ def affichage_graphique(request, capteur_id):
 
     context = {'capteur': capteur, 'graph': graph}
     return render(request, 'appsae/graphique.html', context)
+
+def export_csv(request, capteur_id):
+    capteur = Capteur.objects.get(id=capteur_id)
+    donnees = Donnee.objects.filter(id_capteur=capteur)
+    
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="donnees_capteur.csv"'
+    
+    writer = csv.writer(response)
+    writer.writerow(['Date', 'Heure', 'Temperature', 'Nom Capteur', 'Pièce'])
+    
+    for donnee in donnees:
+        writer.writerow([donnee.datte, donnee.heure, donnee.temperature, capteur.nom_capteur, capteur.piece])
+    
+    return response

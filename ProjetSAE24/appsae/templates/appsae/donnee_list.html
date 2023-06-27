@@ -30,15 +30,22 @@
         <button type="submit">Filtrer</button>
     </form>
 
-    <h2>Modifier le capteur</h2>
-    <a href="{% url 'modifier_capteur' capteur.id %}">
-        <button>Modifier Capteur</button>
-    </a>
+    <div>
+        <h3>Modifier le capteur</h3>
+        <a href="{% url 'modifier_capteur' capteur.id %}">
+            <button>Modifier Capteur</button>
+        </a>
 
-    <h2>Affiche sous forme de graphique</h2>
-    <a href="{% url 'graphique' capteur_id=capteur.id %}">
-        <button>Afficher le graphique</button>
-    </a>
+        <h3>Affiche sous forme de graphique</h3>
+        <a href="{% url 'graphique' capteur_id=capteur.id %}">
+            <button>Afficher le graphique</button>
+        </a>
+
+        <h3>Récupérer les données</h3>
+        <a href="{% url 'export_csv' capteur_id=capteur.id %}">
+            <button>Exporter au format CSV</button>
+        </a>
+    </div>
 
     <h2>Liste des données</h2>
     <table>
@@ -61,5 +68,12 @@
             {% endfor %}
         </tbody>
     </table>
+    <script>
+        // Fonction pour actualiser la page en javascript 
+        function actualiserPage() {
+            location.reload();
+        }
+        setInterval(actualiserPage, 10000);
+    </script>
 </body>
 </html>
