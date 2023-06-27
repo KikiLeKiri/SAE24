@@ -12,5 +12,9 @@
             <a class="capteur-button" href="{% url 'donnee_list' capteur.id %}">{{ capteur.nom_capteur }}</a>
         {% endfor %}
     </div>
+    <h1>Voir les données de tous les capteurs</h1>
+    <a href="{% url 'toute_donnee' %}">
+        <button>Afficher toutes les données</button>
+    </a>
 </body>
 </html>

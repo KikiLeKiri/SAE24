@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filtrage des données de tous les capteurs</title>
+</head>
+<body>
+    <h1>Filtrage des données de tous les capteurs</h1>
+
+    <form method="GET" action="{% url 'filtrage_donnee' %}">
+        <label for="id_capteur">Capteur :</label>
+        <select id="id_capteur" name="capteur" multiple>
+            <option value="">Tous les capteurs</option>
+            {% for capteur in capteurs %}
+                <option value="{{ capteur.id }}">{{ capteur.nom_capteur }}</option>
+            {% endfor %}
+        </select>
+
+        <h3>Filtre :</h3>
+        <label for="start_date">Date de début :</label>
+        <input type="date" id="start_date" name="start_date">
+        <label for="end_date">Date de fin :</label>
+        <input type="date" id="end_date" name="end_date">
+        <label for="start_time">Heure de début :</label>
+        <input type="time" id="start_time" name="start_time">
+        <label for="end_time">Heure de fin :</label>
+        <input type="time" id="end_time" name="end_time">
+    
+        <button type="submit">Filtrer</button>
+    </form>
+
+    <h2>Résultats du filtrage</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Capteur</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Température</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for donnee in donnees %}
+                <tr>
+                    <td>{{ donnee.capteur.nom_capteur }}</td>
+                    <td>{{ donnee.datte }}</td>
+                    <td>{{ donnee.heure }}</td>
+                    <td>{{ donnee.temperature }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

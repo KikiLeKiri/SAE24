@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <a href="{% url 'capteur_list' %}">
+        <button>Retour à la page d'accueil</button>
+    </a>
+<head>
+    <title>Toutes les données des capteurs</title>
+    {% comment %} {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'appsae/toute_donnee.css' %}"> {% endcomment %}
+</head>
+<body>
+    <h1>Toutes les données des capteurs</h1>
+
+    <table>
+        <thead>
+            <tr> 
+                <th>ID </th>
+                <th>Date</th>
+                <th>Heure</th>  
+                <th>Température</th>
+                <th>Pièce</th>
+                <th>Nom du capteur</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for capteur,data in dataset %}
+            {% for donnee in data %}
+                <tr>
+                    <td>{{ donnee.id }}</td>
+                    <td>{{ donnee.datte }}</td>
+                    <td>{{ donnee.heure }}</td>
+                    <td>{{ donnee.temperature }}</td>
+                    <td>{{ capteur.piece }}</td>
+                    <td>{{ capteur.nom_capteur }}</td>
+                </tr>
+            {% endfor %}
+            {% endfor %}
+
+        </tbody>
+    </table>
+</body>
+</html>

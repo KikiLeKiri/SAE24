@@ -20,4 +20,5 @@ urlpatterns = [
     path('capteur_list/', views.capteur_list, name='capteur_list'),
     path('donnee_list/<int:capteur_id>/', views.donnee_list, name='donnee_list'),
     path('modifier_capteur/<int:capteur_id>/', views.modifier_capteur, name='modifier_capteur'),
+    path('toute_donnee/', views.toute_donnee, name='toute_donnee'),
 ]
